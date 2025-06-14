@@ -1,0 +1,19 @@
+{
+  "name": "the-last-guardian",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "dependencies": {
+    "phaser": "v3.90.0"
+  }
+}
