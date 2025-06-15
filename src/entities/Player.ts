@@ -352,11 +352,11 @@ export default class Player {
   }
 
   // Actualización cada frame
-  update(time: number, delta: number): void {
+  update( delta: number): void {
     const mainScene = this.scene as any
     if (mainScene.isPausedForUpgrade) return
     this.handleMovement()
-    this.applyInvulnerability(time)
+    // this.applyInvulnerability(time)
     if (mainScene.hasMagnetism) {
       this.applyMagnetism()
     }
@@ -403,9 +403,9 @@ export default class Player {
     }
   }
 
-  applyInvulnerability(time: number): void {
-    // placeholder para efectos visuales
-  }
+  // applyInvulnerability(time: number): void {
+  //   // placeholder para efectos visuales
+  // }
 
   applyMagnetism(): void {
     const mainScene = this.scene as any

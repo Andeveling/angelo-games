@@ -104,7 +104,7 @@ export default class MainScene extends Phaser.Scene {
       .setScrollFactor(0)
 
     // Colisión jugador-enemigos para daño de contacto
-    this.physics.add.overlap(this.player.container, this.enemies, (plyObj, eneObj) => {
+    this.physics.add.overlap(this.player.container, this.enemies, (_, eneObj) => {
       const enemy = this.enemyManager.enemies.find((e) => e.container === eneObj)
       if (enemy && !this.isPausedForUpgrade) {
         if (enemy.stats.contactDamage) {
@@ -140,7 +140,7 @@ export default class MainScene extends Phaser.Scene {
 
     if (!this.isPausedForUpgrade) {
       // Actualizar jugador
-      this.player.update(time, delta)
+      this.player.update(delta)
       // Actualizar enemigos
       this.enemyManager.updateAll()
       // Actualizar SpawnManager (oleadas, boss, etc.)
