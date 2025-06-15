@@ -4,9 +4,10 @@ export interface EnemyType {
   speed: number
   xp: number
   color: number
-  shape: "bat" | "skeleton" | "zombie" | string
+  shape: "bat" | "skeleton" | "zombie" | "brute" | "elite" | string
   contactDamage?: number
   deathRadius?: number
+  onDieCallback?: () => void // ✅ AÑADIDO
 }
 
 export const EnemyTypes: EnemyType[] = [
@@ -39,5 +40,27 @@ export const EnemyTypes: EnemyType[] = [
     shape: "skeleton",
     contactDamage: 15,
     deathRadius: 18,
+  },
+  // Tipo “bruto” para medias etapas:
+  {
+    id: "brute",
+    hp: 80,
+    speed: 25,
+    xp: 5,
+    color: 0x663300,
+    shape: "zombie",
+    contactDamage: 25,
+    deathRadius: 24,
+  },
+  // Tipo élite tardío:
+  {
+    id: "elite",
+    hp: 150,
+    speed: 50,
+    xp: 10,
+    color: 0xffaa00,
+    shape: "skeleton",
+    contactDamage: 35,
+    deathRadius: 30,
   },
 ]

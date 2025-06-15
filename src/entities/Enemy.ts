@@ -8,6 +8,7 @@ export default class Enemy {
   stats: { hp: number; speed: number; xp: number; contactDamage?: number }
   container: Phaser.GameObjects.Container & { body: Phaser.Physics.Arcade.Body }
   active: boolean
+  onDieCallback?: () => void // ✅ AÑADIDO
 
   constructor(scene: Phaser.Scene, type: EnemyType, x: number, y: number) {
     this.scene = scene
@@ -71,6 +72,9 @@ export default class Enemy {
         fx.destroy()
       },
     })
+    if (this.onDieCallback) {
+      this.onDieCallback()
+    }
     const mainScene = this.scene as any
     mainScene.spawnXpOrb(px, py, this.stats.xp)
     this.destroy()

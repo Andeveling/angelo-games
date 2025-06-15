@@ -1,5 +1,6 @@
 import { type EnemyType } from "@/config/enemies"
 import Enemy from "@/entities/Enemy"
+import type MainScene from "@/scenes/MainScene"
 
 export default class EnemyManager {
   scene: Phaser.Scene
@@ -10,11 +11,16 @@ export default class EnemyManager {
     this.enemies = []
   }
 
-  spawn(type: EnemyType): void {
-    const pos = (this.scene as any).getSpawnPosition()
+  // Ahora retorna Enemy en lugar de void
+  spawn(type: EnemyType): Enemy {
+    // Hacer cast a MainScene para llamar getSpawnPosition
+    const mainScene = this.scene as MainScene
+    const pos = mainScene.getSpawnPosition()
     const enemy = new Enemy(this.scene, type, pos.x, pos.y)
     this.enemies.push(enemy)
-    ;(this.scene as any).enemies.add(enemy.container)
+    // Añadir al grupo de Phaser
+    ;(mainScene.enemies as Phaser.Physics.Arcade.Group).add(enemy.container)
+    return enemy
   }
 
   updateAll(): void {

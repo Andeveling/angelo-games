@@ -51,5 +51,12 @@ export function getAllUpgrades(scene: any): UpgradeOption[] {
         scene.magnetRadius = 100
       },
     },
+    {
+      id: "orbitOrbs",
+      label: "Orbes giratorios",
+      apply: () => {
+        scene.player.enableOrbitOrbs()
+      },
+    },
   ]
 }
